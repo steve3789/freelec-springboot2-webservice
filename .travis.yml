@@ -36,6 +36,7 @@ deploy:
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
 
+
   - provider: codedeploy
     access_key_id: AKIA4KOMMR74HE2AHA4Y # Travis repo settings에 설정된 값
     secret_access_key: ppOG7kom2bKtVytrdvorIFMy7AePsYGNyB7951a2 # Travis repo settings에 설정된 값
