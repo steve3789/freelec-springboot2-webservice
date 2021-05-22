@@ -57,13 +57,13 @@ public class PostsApiControllerTest {
     }
 
     @AfterEach
-    public void tearDown() throws Exception {
+    public void tearDown() {
         postsRepository.deleteAll();
     }
 
     @Test
     @WithMockUser(roles="USER")
-    public void Posts_등록된다() throws Exception {
+    public void Posts_register() throws Exception {
         //given
         String title = "title";
         String content = "content";
@@ -89,7 +89,7 @@ public class PostsApiControllerTest {
 
     @Test
     @WithMockUser(roles="USER")
-    public void Posts_수정된다() throws Exception {
+    public void Posts_update() throws Exception {
         //given
         Posts savedPosts = postsRepository.save(Posts.builder()
                 .title("title")
@@ -110,7 +110,7 @@ public class PostsApiControllerTest {
 
         //when
         mvc.perform(put(url)
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(requestDto)))
                 .andExpect(status().isOk());
 
